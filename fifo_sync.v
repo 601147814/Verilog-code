@@ -1,4 +1,12 @@
-	
+////////////////////////////////////////////////////////////////////////////////////////////////
+//  This module is suitable for FIFO data buffering in a single clock domain. Features:
+//  Support variable data bit width.
+//  Supports variable FIFO depth, limited to a power of 2 depth.
+//  Support FIFO full state watermark setting.
+//  The FIFO read interface is in FWFT (first word fall through) mode.	
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 	
 	module fifo_sync#(
 		parameter DW 			= 8'd8		,
