@@ -294,7 +294,7 @@
 		.wr_en			( rdata_fifo_vld	),
 		.rd_en			( rxdata_vld		),
 		.dout			( rxdata			),
-		.empty			( rxdata_alempty	),
+		.empty			( rxdata_empty		),
 		.alempty		( rxdata_alempty	),
 		.progempty		( 					),
 		.full			( rdata_fifo_full	),
