@@ -68,7 +68,7 @@
 	integer i;
 	
 	localparam OKAY		= 1'b0	;
-	localparam ERROR	= 1'b0	;
+	localparam ERROR	= 1'b1	;
 	
 	localparam IDLE		= 2'b00	;
 	localparam BUSY		= 2'b01	;
