@@ -40,6 +40,12 @@
 		input 		[S_NUM* 1-1:0]	S_HRESP		,
 		output reg	[		1-1:0]	S_HLOCK		,
 	);
+	initial begin 
+		if( AW%8 != 0 )begin $display("$s$d DW is suggested to be a multiple of 8.",`__FILE__,`__LINE__);end
+		if( DW%8 != 0 )begin $display("$s$d DW is suggested to be a multiple of 8.",`__FILE__,`__LINE__);end
+		if( M_NUM > 16 || M_NUM == 0)begin $display("$s$d M_NUM must be smaller than 16",`__FILE__,`__LINE__);end
+		if( S_NUM > 16 || S_NUM == 0)begin $display("$s$d M_NUM must be smaller than 16",`__FILE__,`__LINE__);end
+	end
 	
 	wire clk 	= HCLK		;
 	wire rstn 	= HRESETN	;
