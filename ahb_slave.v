@@ -276,7 +276,7 @@
 		.wr_en			( wdata_fifo_vld	),
 		.rd_en			( txdata_vld		),
 		.dout			( txdata			),
-		.empty			( txdata_alempty	),
+		.empty			( txdata_empty		),
 		.alempty		( txdata_alempty	),
 		.progempty		( 					),
 		.full			( wdata_fifo_full	),
