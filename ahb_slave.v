@@ -99,7 +99,7 @@
 	endgenerate
 	
 	generate for ( j=0;j<REG_RD_NUM;j=j+1)begin:Rd_reg
-		assign rd_reg[j] = rd_din[j*DW+:DW];
+		assign rd_reg[j] = reg_din[j*DW+:DW];
 	end
 	endgenerate
 	
