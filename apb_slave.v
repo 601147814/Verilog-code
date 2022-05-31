@@ -1,4 +1,4 @@
-	
+	//	Not emulated
 	module apb_slave#(
 		parameter DW 			= 32							,
 		parameter AW 			= 32							,
