@@ -267,8 +267,8 @@
 	generate if(FIFO_MODULE == 1'b1)begin:inst_fifo
 		
 	fifo_sync#(
-		.DW 			( 3					),
-		.AW 			( DW				)
+		.DW 			( DW				),
+		.AW 			( 3					)
 	)fifo_tx(		
 		.clk			( clk				),
 		.rst			( ~rstn				),
@@ -285,8 +285,8 @@
 	);
 	
 	fifo_sync#(
-		.DW 			( 3					),
-		.AW 			( DW				)
+		.DW 			( DW				),
+		.AW 			( 3					)
 	)fifo_rx(		
 		.clk			( clk				),
 		.rst			( ~rstn				),
