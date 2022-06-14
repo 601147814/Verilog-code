@@ -38,7 +38,7 @@
 		output reg	[		1-1:0]	S_HREADY_I	,
 		input 		[S_NUM* 1-1:0]	S_HREADY_O	,
 		input 		[S_NUM* 1-1:0]	S_HRESP		,
-		output reg	[		1-1:0]	S_HLOCK		,
+		output reg	[		1-1:0]	S_HLOCK		
 	);
 	initial begin 
 		if( AW%8 != 0 )begin $display("$s$d DW is suggested to be a multiple of 8.",`__FILE__,`__LINE__);end
