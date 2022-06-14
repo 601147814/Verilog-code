@@ -185,16 +185,16 @@
 		end
 		else begin
 			case( S_HADDR[AW-1-:4] )
-				4'd 0:begin hsel = 32'b0000_0000_0000_0000_0000_0000_0000_0001; end
-				4'd 1:begin hsel = 32'b0000_0000_0000_0000_0000_0000_0000_0010; end
-				4'd 2:begin hsel = 32'b0000_0000_0000_0000_0000_0000_0000_0100; end
-				4'd 3:begin hsel = 32'b0000_0000_0000_0000_0000_0000_0000_1000; end
-				4'd 4:begin hsel = 32'b0000_0000_0000_0000_0000_0000_0001_0000; end
-				4'd 5:begin hsel = 32'b0000_0000_0000_0000_0000_0000_0010_0000; end
-				4'd 6:begin hsel = 32'b0000_0000_0000_0000_0000_0000_0100_0000; end
-				4'd 7:begin hsel = 32'b0000_0000_0000_0000_0000_0000_1000_0000; end
-				4'd 8:begin hsel = 32'b0000_0000_0000_0000_0000_0001_0000_0000; end
-				4'd 9:begin hsel = 32'b0000_0000_0000_0000_0000_0010_0000_0000; end
+				4'd0 :begin hsel = 32'b0000_0000_0000_0000_0000_0000_0000_0001; end
+				4'd1 :begin hsel = 32'b0000_0000_0000_0000_0000_0000_0000_0010; end
+				4'd2 :begin hsel = 32'b0000_0000_0000_0000_0000_0000_0000_0100; end
+				4'd3 :begin hsel = 32'b0000_0000_0000_0000_0000_0000_0000_1000; end
+				4'd4 :begin hsel = 32'b0000_0000_0000_0000_0000_0000_0001_0000; end
+				4'd5 :begin hsel = 32'b0000_0000_0000_0000_0000_0000_0010_0000; end
+				4'd6 :begin hsel = 32'b0000_0000_0000_0000_0000_0000_0100_0000; end
+				4'd7 :begin hsel = 32'b0000_0000_0000_0000_0000_0000_1000_0000; end
+				4'd8 :begin hsel = 32'b0000_0000_0000_0000_0000_0001_0000_0000; end
+				4'd9 :begin hsel = 32'b0000_0000_0000_0000_0000_0010_0000_0000; end
 				4'd10:begin hsel = 32'b0000_0000_0000_0000_0000_0100_0000_0000; end
 				4'd11:begin hsel = 32'b0000_0000_0000_0000_0000_1000_0000_0000; end
 	            4'd12:begin hsel = 32'b0000_0000_0000_0000_0001_0000_0000_0000; end
@@ -230,16 +230,16 @@
 	integer i;
 	always@( * )begin
 		case( S_HADDR[AW-1-:4] )
-			4'd 0	:begin M_HRDATA = s_rdata[ 0*DW+:DW] ; M_HRESP = s_resp[ 0]; M_HREADY_I = s_ready[ 0];end
-			4'd 1	:begin M_HRDATA = s_rdata[ 1*DW+:DW] ; M_HRESP = s_resp[ 1]; M_HREADY_I = s_ready[ 1];end
-			4'd 2	:begin M_HRDATA = s_rdata[ 2*DW+:DW] ; M_HRESP = s_resp[ 2]; M_HREADY_I = s_ready[ 2];end
-			4'd 3	:begin M_HRDATA = s_rdata[ 3*DW+:DW] ; M_HRESP = s_resp[ 3]; M_HREADY_I = s_ready[ 3];end
-			4'd 4	:begin M_HRDATA = s_rdata[ 4*DW+:DW] ; M_HRESP = s_resp[ 4]; M_HREADY_I = s_ready[ 4];end
-			4'd 5	:begin M_HRDATA = s_rdata[ 5*DW+:DW] ; M_HRESP = s_resp[ 5]; M_HREADY_I = s_ready[ 5];end
-			4'd 6	:begin M_HRDATA = s_rdata[ 6*DW+:DW] ; M_HRESP = s_resp[ 6]; M_HREADY_I = s_ready[ 6];end
-			4'd 7	:begin M_HRDATA = s_rdata[ 7*DW+:DW] ; M_HRESP = s_resp[ 7]; M_HREADY_I = s_ready[ 7];end
-			4'd 8	:begin M_HRDATA = s_rdata[ 8*DW+:DW] ; M_HRESP = s_resp[ 8]; M_HREADY_I = s_ready[ 8];end
-			4'd 9	:begin M_HRDATA = s_rdata[ 9*DW+:DW] ; M_HRESP = s_resp[ 9]; M_HREADY_I = s_ready[ 9];end
+			4'd0	:begin M_HRDATA = s_rdata[ 0*DW+:DW] ; M_HRESP = s_resp[ 0]; M_HREADY_I = s_ready[ 0];end
+			4'd1	:begin M_HRDATA = s_rdata[ 1*DW+:DW] ; M_HRESP = s_resp[ 1]; M_HREADY_I = s_ready[ 1];end
+			4'd2	:begin M_HRDATA = s_rdata[ 2*DW+:DW] ; M_HRESP = s_resp[ 2]; M_HREADY_I = s_ready[ 2];end
+			4'd3	:begin M_HRDATA = s_rdata[ 3*DW+:DW] ; M_HRESP = s_resp[ 3]; M_HREADY_I = s_ready[ 3];end
+			4'd4	:begin M_HRDATA = s_rdata[ 4*DW+:DW] ; M_HRESP = s_resp[ 4]; M_HREADY_I = s_ready[ 4];end
+			4'd5	:begin M_HRDATA = s_rdata[ 5*DW+:DW] ; M_HRESP = s_resp[ 5]; M_HREADY_I = s_ready[ 5];end
+			4'd6	:begin M_HRDATA = s_rdata[ 6*DW+:DW] ; M_HRESP = s_resp[ 6]; M_HREADY_I = s_ready[ 6];end
+			4'd7	:begin M_HRDATA = s_rdata[ 7*DW+:DW] ; M_HRESP = s_resp[ 7]; M_HREADY_I = s_ready[ 7];end
+			4'd8	:begin M_HRDATA = s_rdata[ 8*DW+:DW] ; M_HRESP = s_resp[ 8]; M_HREADY_I = s_ready[ 8];end
+			4'd9	:begin M_HRDATA = s_rdata[ 9*DW+:DW] ; M_HRESP = s_resp[ 9]; M_HREADY_I = s_ready[ 9];end
 			4'd10	:begin M_HRDATA = s_rdata[10*DW+:DW] ; M_HRESP = s_resp[10]; M_HREADY_I = s_ready[10];end
 			4'd11	:begin M_HRDATA = s_rdata[11*DW+:DW] ; M_HRESP = s_resp[11]; M_HREADY_I = s_ready[11];end
 			4'd12	:begin M_HRDATA = s_rdata[12*DW+:DW] ; M_HRESP = s_resp[12]; M_HREADY_I = s_ready[12];end
