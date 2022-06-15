@@ -167,7 +167,7 @@
 		end
 		else if((( trans_r[1] & ready & HSEL) == 1'b1) && (hwrite_r == WRITE))begin
 			if((addr_r >= SOF_RW_REG) && (addr_r <= EOF_RW_REG))begin
-				for(i=0;i<DW/8;I=I+1)begin:Wstrb_loop
+				for(i=0;i<DW/8;i=i+1)begin:Wstrb_loop
 					if(hwstrb_r[i] == 1'b1)begin
 						rw_reg[addr_r-SOF_RW_REG][i*8+:8] <= HWDATA[i*8+:8];
 					end
