@@ -29,8 +29,8 @@
 	module fifo_sync#(
 		parameter DW 			= 8'd8		,
 		parameter AW 			= 8'd8		,
-		parameter FULL_HOLD 	= 8'd4		,
-		parameter EMPTY_HOLD 	= 8'd4		
+		parameter FULL_HOLD 	= 8'd2		,
+		parameter EMPTY_HOLD 	= 8'd2		
 	)(
 		input				clk			,
 		input				rst			,
@@ -47,8 +47,8 @@
 	);
 	
 	initial begin
-		if( AW<3 )begin $display("$s$d AW must be bigger than 4",`__FILE__,`__LINE__);$finish;end
-		if( DW%8 != 0 )begin $display("$s$d DW is suggested to be a multiple of 8.",`__FILE__,`__LINE__);end
+		if( AW == 0 )begin $display("$s$d AW must be bigger than 0",`__FILE__,`__LINE__);$finish;end
+	//	if( DW%8 != 0 )begin $display("$s$d DW is suggested to be a multiple of 8.",`__FILE__,`__LINE__);end
 		if( FULL_HOLD > (2**AW - 1) )begin $display("$s$d FULL_HOLD must be smaller than %d.",`__FILE__,`__LINE__,(2**AW - 1));$finish;end
 		if( EMPTY_HOLD > (2**AW - 1) )begin $display("$s$d EMPTY_HOLD must be smaller than %d.",`__FILE__,`__LINE__,(2**AW - 1));$finish;end
 	end
@@ -65,7 +65,6 @@
 
 	localparam DEPTH = 2 ** AW;
 	integer i;
-
 	
 	reg[(AW+1)-1:0]wr_p;
 	reg[(AW+1)-1:0]rd_p;
@@ -90,10 +89,7 @@
 		end
 	end
 	
-	reg[DW-1:0]mem [DEPTH-1:0];
-	
-	
-	
+	reg[DW-1:0]mem [DEPTH-1:0];	
 
 	always@( posedge rst or posedge clk )begin
 		if( rst == 1'b1 )begin
@@ -177,7 +173,6 @@
 		end
 	end
 
-
 	always@( posedge rst or posedge clk )begin
 		if( rst == 1'b1 )begin
 			full <= 1'b1;
@@ -196,8 +191,7 @@
 		else begin
 			full <= 1'b0;
 		end
-	end	
-	
+	end		
 	
 	always@( posedge rst or posedge clk )begin
 		if( rst == 1'b1 )begin
@@ -218,7 +212,6 @@
 			alempty <= 1'b0;
 		end
 	end
-
 
 	always@( posedge rst or posedge clk )begin
 		if( rst == 1'b1 )begin
