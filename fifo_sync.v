@@ -40,10 +40,12 @@
 		output	[DW-1:0]	dout		,
 		output	reg			empty		,
 		output	reg			alempty		,
-		output	reg			progempty	,
+		output	reg			progempty	,	// when EMPTY_HOLD == 1, progempty is same with alempty
 		output	reg			full		,
 		output	reg			alfull		,
-		output	reg			progfull	
+		output	reg			progfull	,	// when FULL_HOLD == 1, progfull is same with alfull
+		output	reg[AW:0]	rd_space	,	// fifo space could be read
+		output  reg[AW:0]	wr_space		// fifo space could be written
 	);
 	
 	initial begin
@@ -125,9 +127,6 @@
 	
 	assign dout <= (empty == 1'b1)? {DW{1'b0}} : mem[rd_p[AW-1:0]];
 	
-	reg[AW:0]rd_space;
-	reg[AW:0]wr_space;
-	
 	always@( posedge rst or posedge clk )begin
 		if( rst == 1'b1 )begin
 			rd_space <= {(AW+1){1'b0}};
@@ -138,8 +137,7 @@
 		else begin
 			rd_space <= wr_p_temp - rd_p;
 		end
-	end
-	
+	end	
 	
 	always@( posedge rst or posedge clk )begin
 		if( rst == 1'b1 )begin
