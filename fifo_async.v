@@ -30,8 +30,8 @@
 	module fifo_async#(
 		parameter DW 			= 8'd8		,
 		parameter AW 			= 8'd8		,
-		parameter FULL_HOLD 	= 8'd4		,
-		parameter EMPTY_HOLD 	= 8'd4		
+		parameter FULL_HOLD 	= 8'd2		,
+		parameter EMPTY_HOLD 	= 8'd2		
 	)(
 		input				clk_wr		,
 		input				clk_rd		,
@@ -49,25 +49,25 @@
 	);
 	
 	initial begin
-		if( AW<3 )begin $display("$s$d AW must be bigger than 4",`__FILE__,`__LINE__);$finish;end
-		if( DW%8 != 0 )begin $display("$s$d DW is suggested to be a multiple of 8.",`__FILE__,`__LINE__);end
+		if( AW==0 )begin $display("$s$d AW must be bigger than 0",`__FILE__,`__LINE__);$finish;end
+	//	if( DW%8 != 0 )begin $display("$s$d DW is suggested to be a multiple of 8.",`__FILE__,`__LINE__);end
 		if( FULL_HOLD > (2**AW - 1) )begin $display("$s$d FULL_HOLD must be smaller than %d.",`__FILE__,`__LINE__,(2**AW - 1));$finish;end
 		if( EMPTY_HOLD > (2**AW - 1) )begin $display("$s$d EMPTY_HOLD must be smaller than %d.",`__FILE__,`__LINE__,(2**AW - 1));$finish;end
 	end
 	
-	always@( posedge clk_wr )begin
-		if( ( wr_en == 1'b1 ) && ( full == 1'b1 ) )begin			
-			$display("&s&d write data to full fifo ",`__FILE__,`__LINE__);		
-		end
-		else;
-	end
-	
-	always@( posedge clk_rd )begin
-		if(( rd_en == 1'b1 ) && ( empty == 1'b1 ))begin
-			$display("&s&d read data from empty fifo ",`__FILE__,`__LINE__);
-		end
-		else;
-	end
+//	always@( posedge clk_wr )begin
+//		if( ( wr_en == 1'b1 ) && ( full == 1'b1 ) )begin			
+//			$display("&s&d write data to full fifo ",`__FILE__,`__LINE__);		
+//		end
+//		else;
+//	end
+//	
+//	always@( posedge clk_rd )begin
+//		if(( rd_en == 1'b1 ) && ( empty == 1'b1 ))begin
+//			$display("&s&d read data from empty fifo ",`__FILE__,`__LINE__);
+//		end
+//		else;
+//	end
 
 	localparam DEPTH = 2 ** AW;
 	integer i;
@@ -106,10 +106,7 @@
 		end
 	end
 	
-	reg[DW-1:0]mem [DEPTH-1:0];
-	
-	
-	
+	reg[DW-1:0]mem [DEPTH-1:0];	
 
 	always@( posedge rst or posedge clk_wr )begin
 		if( rst == 1'b1 )begin
@@ -158,8 +155,7 @@
 		else begin
 			rd_space <= wr_p_temp - rd_p;
 		end
-	end
-	
+	end	
 	
 	always@( posedge rst or posedge clk_wr )begin
 		if( rst == 1'b1 )begin
@@ -193,7 +189,6 @@
 		end
 	end
 
-
 	always@( posedge rst or posedge clk_wr )begin
 		if( rst == 1'b1 )begin
 			full <= 1'b1;
@@ -213,8 +208,7 @@
 			full <= 1'b0;
 		end
 	end	
-	
-	
+		
 	always@( posedge rst or posedge clk_rd )begin
 		if( rst == 1'b1 )begin
 			alempty <= 1'b1;
@@ -234,7 +228,6 @@
 			alempty <= 1'b0;
 		end
 	end
-
 
 	always@( posedge rst or posedge clk_rd )begin
 		if( rst == 1'b1 )begin
@@ -295,8 +288,7 @@
 			progfull <= 1'b0;
 		end
 	end
-	
-	
+		
 	Binary2Gray #(
 		.DW		( AW+1		)
 	)b0_wr_p_gray(
