@@ -11,7 +11,7 @@
 //                      _______________ 
 //   wr_en       ______|       |       |_____________________________________________________
 //                      _______ ______
-//   din         XXXXXX __D0___|__D1__ XXX
+//   din         XXXXXX|___D0__|__D1__| XXX
 //
 //   full        _____________________________________________________________________________
 //               __    __    __    __    __    __    __    __    __    __    __    __    __   
@@ -159,7 +159,7 @@
 	
 	always@( posedge rst or posedge clk_wr )begin
 		if( rst == 1'b1 )begin
-			wr_space <= {(AW+1){1'b0}};
+			wr_space <= {1'b1,{AW{1'b0}}};
 		end
 		else if(( empty == 1'b0 ) && ( rd_en == 1'b1 ))begin
 			wr_space <= rp_p_temp - wr_p - DEPTH - 1'b1;
