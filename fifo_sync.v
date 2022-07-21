@@ -173,7 +173,7 @@
 
 	always@( posedge rst or posedge clk )begin
 		if( rst == 1'b1 )begin
-			full <= 1'b1;
+			full <= 1'b0;
 		end
 		else if( (wr_p[AW] != rd_p_temp[AW]) && (wr_p[0+:AW] == rd_p_temp[0+:AW]))begin
 			full <= 1'b1;
