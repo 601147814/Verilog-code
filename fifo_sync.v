@@ -55,15 +55,15 @@
 		if( EMPTY_HOLD > (2**AW - 1) )begin $display("$s$d EMPTY_HOLD must be smaller than %d.",`__FILE__,`__LINE__,(2**AW - 1));$finish;end
 	end
 	
-	always@( posedge clk )begin
-		if( ( wr_en == 1'b1 ) && ( full == 1'b1 ) )begin
-			$display("&s&d write data to full fifo ",`__FILE__,`__LINE__);
-		end
-		else if(( rd_en == 1'b1 ) && ( empty == 1'b1 ))begin
-			$display("&s&d read data from empty fifo ",`__FILE__,`__LINE__);
-		end
-		else;
-	end
+//	always@( posedge clk )begin
+//		if( ( wr_en == 1'b1 ) && ( full == 1'b1 ) )begin
+//			$display("&s&d write data to full fifo ",`__FILE__,`__LINE__);
+//		end
+//		else if(( rd_en == 1'b1 ) && ( empty == 1'b1 ))begin
+//			$display("&s&d read data from empty fifo ",`__FILE__,`__LINE__);
+//		end
+//		else;
+//	end
 
 	localparam DEPTH = 2 ** AW;
 	integer i;
@@ -141,7 +141,7 @@
 	
 	always@( posedge rst or posedge clk )begin
 		if( rst == 1'b1 )begin
-			wr_space <= {(AW+1){1'b0}};
+			wr_space <= {1'b1,{AW{1'b0}}};
 		end
 		else if(( empty == 1'b0 ) && ( rd_en == 1'b1 ))begin
 			wr_space <= rp_p_temp - wr_p - DEPTH - 1'b1;
