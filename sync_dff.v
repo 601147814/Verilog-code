@@ -7,6 +7,7 @@
 	//		.DFF 	( 2		),
 	//		.LOGIC	( 2		)
 	//	)(
+	//		.rst	(		),
 	//		.clk	(		),
 	//		.din	(		),
 	//		.dout   (		)
@@ -19,6 +20,7 @@
 		parameter DFF 	= 2	,
 		parameter LOGIC = 2		//0: or; 1: and; 2: nothing
 	)(
+		input 					rst		,
 		input 					clk		,
 		input	[WIDTH-1:0] 	din		,
 		output	[WIDTH-1:0]		dout
