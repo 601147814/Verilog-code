@@ -24,7 +24,7 @@
 		input 					clk		,
 		input	[WIDTH-1:0] 	din		,
 		output	[WIDTH-1:0]		dout
-	)
+	);
 	
 	reg[WIDTH*DFF-1:0] data_reg;
 	
