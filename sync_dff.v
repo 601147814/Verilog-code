@@ -45,7 +45,7 @@
 			assign	dout = &data_reg;
 		end
 		else if(LOGIC == 2)begin: no_op
-			assign	dout = data_reg[WIDTH*(DFF-1)];
+			assign	dout = data_reg[DFF-1];
 		end
 	end
 	else if(WIDTH > 1)begin: 
